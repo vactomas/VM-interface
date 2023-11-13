@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+
+    openqa-single-instance:
+        image: registry.opensuse.org/devel/openqa/containers/openqa-single-instance:latest
+        container_name: openqa
+        volumes:
+          - ./iso:/iso_images
+          - ./tests:/tests
+        ports:
+          - 1080:80
+          - 1443:443
+        restart: unless-stopped
+        tty: true
