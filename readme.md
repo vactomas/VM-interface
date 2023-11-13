@@ -34,7 +34,7 @@ This repository contains files for my Bachelor's thesis regarding automated visu
 
  - Go to the Terminal tab
 
- ![Alt text](image.png)
+ ![Alt text](images/podman-terminal.png)
 
  - This example will use the OpenSUSE Live environment. To download OpenSUSE factory tests, use the following commands
 
@@ -56,4 +56,4 @@ This repository contains files for my Bachelor's thesis regarding automated visu
          LIVECD = true \
          BUILD=BUILDID`
 
-    ISONAME and BUILDID are variables that need to be changed. The rest of this command presumes that you are using KDE-Live version of Tumbleweed.
+ISONAME and BUILDID are variables that need to be changed. The rest of this command presumes that you are using KDE-Live version of Tumbleweed.
