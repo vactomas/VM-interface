@@ -6,8 +6,8 @@ services:
         image: registry.opensuse.org/devel/openqa/containers/openqa-single-instance:latest
         container_name: openqa
         volumes:
-          - ./iso:/iso_images
-          - ./tests:/tests
+          - ./iso:/var/lib/openqa/factory/iso
+          - ./testplatform:/var/lib/openqa/tests/apptest
         ports:
           - 1080:80
           - 1443:443

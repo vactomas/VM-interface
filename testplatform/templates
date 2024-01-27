@@ -1,0 +1,57 @@
+#!/usr/share/openqa/script/load_templates
+
+#
+# openQA app testing
+#
+
+{
+# Define the JobTemplate, which holds all the tests
+  JobTemplates => [
+    {
+      group_name  => "openSUSE KDE Live testing platform",
+      machine     => { name => "64bit" },
+      prio        => 50,
+      product     => {
+        arch        => "x86_64",
+        distri      => "apptest",     # relevant folder in /vqr/lib/openqa/tests/
+        flavor      => "KDELive",
+        group       => "AppTesting",
+        version     => "*",
+      },
+      test_suite  => { name => "PrimaryTest" },
+    },
+  ],
+
+# Define available Machines
+  Machines => [
+    {
+      backend   => "qemu",
+      name      => "64bit",
+      settings  => [
+        { key => "QEMUCPU", value => "qemu64" },
+        { key => "WORKER_CLASS", value => "qemu_x86_64" },
+      ],
+    },
+  ],
+
+# Define Products
+  Products => [
+    {
+      arch      => "x86_64",
+      distri    => "apptest",
+      flavor    => "KDELive",
+      settings  => [
+                      {key => "ISO_MAXSIZE", value => 999999999},
+                      {key => "LIVECD",      value => 1},
+                    ],
+      version   => "*",
+    },
+  ],
+
+# Define Test Suites
+  TestSuites => [
+    {
+      name    => "PrimaryTest",
+    },
+  ],
+}
