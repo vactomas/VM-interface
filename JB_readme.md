@@ -43,6 +43,7 @@
 ## Running ILM
 1) weston must be running by `XDG_RUNTIME_DIR=/run/ser/1000 weston` as sudo
 2) Run `XDG_RUNTIME_DIR=/run/user/1000 ./qad -s ilm`
+3) does not work yet
 
 
 
