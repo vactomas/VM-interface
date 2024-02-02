@@ -35,11 +35,11 @@ use File::Basename;
 #    my @a = @{needle::tags($tag)};
 #    for my $n (@a) { $n->unregister(); }
 #}
-
-## Functions for laoding tests
+ 
+## Functions for loading tests
 
 sub load_tests() {
-  autotest::loadtest "tests/boot.pm";
+  autotest::loadtest "tests/boot.py";
 }
 
 ## Load tests
