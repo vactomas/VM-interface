@@ -84,4 +84,4 @@ This repository contains files for my Bachelor's thesis regarding automated visu
         URL=https://github.com/Qalculate/qalculate-gtk/releases/download/v4.9.0/qalculate-4.9.0-x86_64.tar.xz \
         --apikey APIKEY --apisecret APISECRET`
 
-ISONAME and BUILDID are variables that need to be changed. The rest of this command presumes that you are using KDE-Live version of Tumbleweed. APP and URL are custom variables used as a part of demonstration test. APIKEY and APISECRET can be found at http://127.0.0.1/api_keys 
+ISONAME and BUILDID are variables that need to be changed. The rest of this command presumes that you are using KDE-Live version of Tumbleweed. APP and URL are custom variables used as a part of an demonstration test. APIKEY and APISECRET can be found at http://127.0.0.1/api_keys 
