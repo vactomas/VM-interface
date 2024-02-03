@@ -39,7 +39,11 @@ use File::Basename;
 ## Functions for loading tests
 
 sub load_tests() {
+  # Ensure system boots
   autotest::loadtest "tests/boot.py";
+  
+  # Open Konsole and download app
+  autotest::loadtest "tests/app_download.py";
 }
 
 ## Load tests
