@@ -29,3 +29,49 @@ def uefi_boot():
   
     # Boot
     send_key("ctrl-x")
+
+
+def open_app(app_name):
+    # Open app menu
+    send_key("super")
+
+    # Sleep for a bit to ensure it opens
+    sleep(1)
+
+    # Type the app name and press ENTER
+    type_string(app_name)
+
+    sleep(1)
+    send_key("ret")
+    sleep(1)
+
+def download_and_open():
+    # Get variables from test settings
+    app_name = get_var("APP")
+    url = get_var("URL")
+
+    # Open Konsole
+    open_app("Konsole")
+    assert_screen("konsole_opened", 2)
+
+    # Download app
+    type_string(f"wget {url}\n",)
+    sleep(10)
+    
+
+    # Untar
+    type_string(f"tar -xf {app_name}")
+    send_key("tab")
+    send_key("ret")
+    sleep(10)
+    
+    # Open app folder
+    type_string(f"cd {app_name}")
+    send_key("tab")
+    send_key("ret")
+    sleep(1)
+
+    # Run app
+    type_string(f"./{app_name}\n")
+    sleep(1)
+
