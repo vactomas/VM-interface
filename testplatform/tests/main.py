@@ -12,7 +12,7 @@ def run(self):
     elif (get_var("VERSION") == "Windows"):
 
         perl.autotest.loadtest("boot_win.py")
-
+        perl.autotest.loadtest("win.py")
 
 def test_flags(self):
     return {'fatal': 1}
