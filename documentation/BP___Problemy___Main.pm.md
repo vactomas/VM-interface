@@ -8,4 +8,4 @@
 - Workaround používá `Inline::Python` pro načtení Perl modulu (`perl.require("xyz.pm")`) a poté pomocí `perl.xyz.zyx()` spouští jednotlivé funkce
 - Odkaz na soubory
 	- [main.pm](https://github.com/vactomas/openqa-app-testing/raw/master/testplatform/main.pm)
-	-
+	- [main.py](https://github.com/vactomas/openqa-app-testing/master/testplatform/tests/main.py)
