@@ -2,7 +2,7 @@
 	- Bez něj nemůže worker spustit testování - vyhodí chybu a spadne
 	- `main.pm` není přímo možné nahradit `main.py`
 - Workaround:
-	- Stáhnout [autotest](https://github.com/os-autoinst/os- autoinst/blob/ba17755f4c68c48aeb33a81b85402643458ea949/autotest.pm) do složky `tests`
+	- Stáhnout [autotest](https://github.com/os-autoinst/os-autoinst/blob/ba17755f4c68c48aeb33a81b85402643458ea949/autotest.pm) do složky `tests`
 	- Ze souboru `main.pm` nahrát `main.py`
 	- V `main.py` nahrávat testy (je možné použít dělící logiku)
 - Workaround používá `Inline::Python` pro načtení Perl modulu (`perl.require("xyz.pm")`) a poté pomocí `perl.xyz.zyx()` spouští jednotlivé funkce

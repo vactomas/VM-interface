@@ -1,7 +1,7 @@
 # To-do list
-	- TODO Windows
-		- TODO Prozkoumat backendy
-		- TODO QEMU
+	- DONE Windows
+		- DONE Prozkoumat backendy
+		- DONE QEMU
 	- TODO OCR
 	- TODO Vlastní metoda aserce
 	- TODO LaTeX
