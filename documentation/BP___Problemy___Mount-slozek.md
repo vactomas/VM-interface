@@ -1,0 +1,7 @@
+- Složky jsou v guest VM exponované jako virtiofs disky
+	- Host musí mít virtiofs nainstalované, aby tato možnost mohla být použita
+	- openqa-tests => složka distribuce [[BP/Struktura-slozky]]
+	- openqa-isos => složka s ISO soubory
+	-
+- Pomocí příkazu `sudo mount -t virtiofs openqa-tests /var/lib/openqa/tests/apptest/` tuto složku připojíme do filesystemu jako složku distribuce
+- `sudo mount -t virtiofs openqa-isos /var/lib/openqa/factory/iso/` slouží k připojení složky s iso soubory

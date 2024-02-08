@@ -1,0 +1,4 @@
+- Minimalizace závislosti na Perlu -> [[BP/Problemy/Main.pm]]
+- Nefunkční Inline::Python -> [[BP/Problemy/Python]]
+- Mount složek sdílených mezi hostem a OpenSUSE Guest VM, na které běží OpenQA -> [[BP/Problemy/Mount-slozek]]
+- Windows - nelze vytvořit LiveCD ISO -> [[BP/Problemy/Windows_ISO]]

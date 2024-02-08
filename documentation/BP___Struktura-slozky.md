@@ -1,0 +1,4 @@
+- Samotné [[BP/Testy]]se nacházejí (v našem případě) ve složce `testplatform/tests`
+- Soubor `templates` obsahuje definici JobTemplates, Machines, Products a TestSuites
+- Každá distribuce má vlastní soubor `main.pm`, který obsahuje podmínky pro nahrávání testů
+- Složka `needles` obsahuje samotné `needles`, se kterými se porovnávají screenshoty

@@ -20,6 +20,19 @@
       },
       test_suite  => { name => "PrimaryTest" },
     },
+    {
+      group_name  => "Windows testing platform",
+      machine     => { name => "64bit" },
+      prio        => 50,
+      product     => {
+        arch        => "x86_64",
+        distri      => "apptest",     # relevant folder in /vqr/lib/openqa/tests/
+        flavor      => "Windows",
+        group       => "AppTesting",
+        version     => "*",
+      },
+      test_suite  => { name => "PrimaryTest" },
+    },
   ],
 
 # Define available Machines
@@ -40,6 +53,16 @@
       arch      => "x86_64",
       distri    => "apptest",
       flavor    => "KDELive",
+      settings  => [
+                      {key => "ISO_MAXSIZE", value => 999999999},
+                      {key => "LIVECD",      value => 1},
+                    ],
+      version   => "*",
+    },
+    {
+      arch      => "x86_64",
+      distri    => "apptest",
+      flavor    => "Windows",
       settings  => [
                       {key => "ISO_MAXSIZE", value => 999999999},
                       {key => "LIVECD",      value => 1},
