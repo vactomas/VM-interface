@@ -1,17 +1,12 @@
 - # Postup získání disku
 	- ## Prerekvizity
-		- [odkaz na Ubuntu ISO](https://ubuntu.com/download/desktop)
 		- [Windown 10 ISO](https://www.microsoft.com/cs-cz/software-download/windows10ISO) nebo [Windows 11 ISO](https://www.microsoft.com/software-download/windows11)
 		- [virtIO drivers ISO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso)
-	- ## Instalace Ubuntu
-		- Využijeme nested virtualizace, případně instalace Ubuntu na bare-hardware. Z tohoto systému potom budeme vytvářet disk s instalací Windows
-		- Tvorba disku z prostředí některé z distribucí GNU/Linux je nejjednodušší, protože potřebujeme, aby disk s instalací splňoval správné parametry (zejména formát disku a hlavně typ virtualizované sběrnice)
-		- Postačí standardní Ubuntu Desktop v jakékoliv verzi - odkaz na ISO v prerekvizitách
-		- Provedeme klasickou instalaci a spustíme OS
 	- ## Tvorba disku s instalací Windows
 		- ### Instalace virt-manageru
-			- Pro pohodlnější použití KVM (kernel-based virtual machine) a QEMU využijeme aplikaci `virt-manager`, která nám poskytkne grafické rozhraní
-			- Příkaz `sudo apt update && sudo apt upgrade && sudo apt install virt-manager` aktualizuje list zdrojů, systém a poté nainstaluje `virt-manager`
+			- Pro pohodlnější použití KVM (kernel-based virtual machine) a QEMU využijeme aplikaci `virt-manager`, která nám poskytkne grafické rozhraní pro `libvirt`
+			- Příkaz `sudo zypper install virt-manager libvirt` nainstaluje aplikaci `virt-manager` a samotné rozhraní `libvirt`
+			- `sudo reboot` pro restart systému
 			- Nyní můžeme `virt-manager` spustit
 		- ### Vytvoření disku
 			- Na úvodní straně uvidíme v levém horním rohu následující set ikon
