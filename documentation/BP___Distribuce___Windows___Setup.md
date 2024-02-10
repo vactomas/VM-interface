@@ -1,0 +1,80 @@
+# Postup získání disku
+	- ## Prerekvizity
+		- [odkaz na Ubuntu ISO](https://ubuntu.com/download/desktop)
+		- [Windown 10 ISO](https://www.microsoft.com/cs-cz/software-download/windows10ISO) nebo [Windows 11 ISO](https://www.microsoft.com/software-download/windows11)
+		- [virtIO drivers ISO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso)
+	- ## Instalace Ubuntu
+		- Využijeme nested virtualizace, případně instalace Ubuntu na bare-hardware. Z tohoto systému potom budeme vytvářet disk s instalací Windows
+		- Tvorba disku z prostředí některé z distribucí GNU/Linux je nejjednodušší, protože potřebujeme, aby disk s instalací splňoval správné parametry (zejména formát disku a hlavně typ virtualizované sběrnice)
+		- Postačí standardní Ubuntu Desktop v jakékoliv verzi - odkaz na ISO v prerekvizitách
+		- Provedeme klasickou instalaci a spustíme OS
+	- ## Tvorba disku s instalací Windows
+		- ### Instalace virt-manageru
+			- Pro pohodlnější použití KVM (kernel-based virtual machine) a QEMU využijeme aplikaci `virt-manager`, která nám poskytkne grafické rozhraní
+			- Příkaz `sudo apt update && sudo apt upgrade && sudo apt install virt-manager` aktualizuje list zdrojů, systém a poté nainstaluje `virt-manager`
+			- Nyní můžeme `virt-manager` spustit
+		- ### Vytvoření disku
+			- Na úvodní straně uvidíme v levém horním rohu následující set ikon
+				- ![screenshot_24-02-09-204312.png](../assets/screenshot_24-02-09-204312_1707507859272_0.png)
+					- První ikona slouží pro vytvoření VM
+			- Následující okno
+				- ![screenshot_24-02-09-204452.png](../assets/screenshot_24-02-09-204452_1707508045997_0.png)
+					- Chceme ponechat volbu `Local install media` - použijeme již stažené ISO Windows
+					- V možnostech architektury ponecháme x86_64
+			- Výběr instalačního ISO
+				- ![screenshot_24-02-09-205048.png](../assets/screenshot_24-02-09-205048_1707508279682_0.png)
+					- Zvolíme ISO s Windows 10 nebo 11
+					- Pokud se automaticky nezvolí námi chtěný systém, odškrtneme automatickou detekci a zvolíme Microsoft Windows 10 nebo 11 (dle námi použité verze)
+			- Přiřadíme VM RAM a CPUs
+				- ![screenshot_24-02-09-205409.png](../assets/screenshot_24-02-09-205409_1707508504758_0.png)
+				- Minimální množství je 4096 MB a 2 CPU pro Windows 10
+				- Více přiřazených zdrojů umožní rychlejší instalaci
+			- Následuje volba velikosti disku
+				- ![screenshot_24-02-09-205739.png](../assets/screenshot_24-02-09-205739_1707508697943_0.png)
+				- Velikost tohoto disku určuje dostupnou kapacitu, kterou bude celá instalace mít. Musíme počítat i s velikostí testované aplikace
+				- Je nutno mít na paměti, že tento disk bude existovat v době testování "2x" -> 1 instance bude sloužit jako template, ze kterého se budou tvořit disky pro testy a druhý bude samotný disk workera, který testy provádí
+			- V posledním okně pouze vybereme možnost úprav konfigurace před instalací
+				- ![screenshot_24-02-09-210350.png](../assets/screenshot_24-02-09-210350_1707509075470_0.png)
+			- Zde musíme provést dvě změny konfigurace před zahájením instalace
+				- ![screenshot_24-02-09-210735.png](../assets/screenshot_24-02-09-210735_1707509342816_0.png)
+				- Změnit Disk bus u disku SATA Disk 1 ze `SATA` na `VirtIO`
+				- ![screenshot_24-02-09-210803.png](../assets/screenshot_24-02-09-210803_1707509397330_0.png)
+				- Využít možnost `Add Hardware` a přidat `Storage` -> device type - CDROM
+					- Zde přiřadíme VirtIO Drivers ISO
+			- Poté můžeme zahájit instalaci
+				- Jakmile se dostaneme do bodu s výběrem disku, narazíme na problém, kdy Windows nevidí disk
+				- ![screenshot_24-02-09-211414.png](../assets/screenshot_24-02-09-211414_1707509761424_0.png)
+				- Zvolíme `Load driver`
+				- ![screenshot_24-02-09-211433.png](../assets/screenshot_24-02-09-211433_1707509819385_0.png)
+				- Ovladače se automaticky načtou z druhé virtualizované CDROM
+				- Vybereme možnost s cestou obsahující w10 nebo w11 dle použité verze operačního systému
+			- Dokončíme instalaci a prvotní nastavení
+			- Nyní můžeme instalaci systému doplnit o další aplikace, ovladače nebo další nastavení. Po dokončení tvorby základního "šablonového" disku Windows systém vypneme
+			- Výsledný soubor .qcow2 soubor s diskem je připraven pro další použití
+- # Příprava testovacího rozhraní
+	- Soubor `templates`, který je součástí git repozitáře, obsahuje předdefinovaný TestSuite pro Windows
+	- Zároveň jsou zde obsažené i základní testy připravené pro platformu Windows
+	- Soubor s diskem překopírujeme na disk systému OpenSUSE, kde máme funkční OpenQA instanci
+	- Nyní už můžeme disk buď rovnou zkopírovat do `/var/lib/openqa/factory/hdd` (v tom případě stačí přeskočit na sekci Testování), nebo provedeme další nezbytnou konfiguraci, která nám umožní automaticky vytvořit vždy novou kopii disku na začátku testu a po jeho dokončení ji smazat
+	- Nejprve změny v `/etc/openqa/openqa.ini`
+		- v sekci `[global]` je položka `download_domains`
+			- odstraníme `#` a jako platnou doménu nastavíme `0.0.0.0` (případně jiný server, ze kterého budeme stahovat disk)
+		- sekce `[default_group_limits]`
+			- `asset_size_limit` nastavíme maximální velikost disku nebo ISO souboru, který může zůstat uložený na disku i po dokončení testu
+				- hodnota se udává v GB
+				- 10 (GB) by měla být dostatečná velikost, která zabrání smazání ISO souborů, ale zároveň smaže využitou kopii disku
+		- v sekci `[minion_task_triggers]` je položka `on_job_done`
+			- zde můžeme nastavit aktivity, které se spustí po dokončení testovacího jobu
+			- nás zajímá pouze možnost `limit_assets`
+		- Po dokončení výše uvedených úprav soubor uložíme a restartujeme celý OS
+	- Vytvoření HTTP serveru, který bude poskytovat data
+		- Přejdeme v konzoli do složky na našem OpenQA host systému, kde máme uložený disk
+		- Příkazem `sudo chown $USER jméno_disku.qcow2` změní vlastnictví disku na současného uživatele
+		- Nyní můžeme využít SimpleHTTPServer pro poskytování souborů z této složky
+			- `python3 -m  http.server 8000` vytvoří server na adrese `0.0.0.0:8000`
+			- Můžeme také povolit port 8000, abychom server zpřístupnili pro všechny zařízení v lokální síti
+	- Můžeme pokračovat s testováním
+- # Testování
+	- Soubor `templates` obsahuje upravené šablony pro použití s Windows
+	- Příkaz, který spustí testy s Windows, je `openqa-cli api -X POST isos DISTRI=apptest VERSION=Windows FLAVOR=Windows ARCH=x86_64 BUILD=Windows HDD_1_URL=http://0.0.0.0:8000/DRIVE_NAME.qcow2 --apikey APIKEY --apisecret APISECRET`
+		- `VERSION` a `FLAVOR` jsou proměnné, které spustí specifický TestSuite pro Windows (vše je nastavené v `templates`)

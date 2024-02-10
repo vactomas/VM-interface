@@ -56,3 +56,6 @@
 - # Distribuce
 	- [[BP/Distribuce/OpenSUSE]] - otestováno OpenSUSE ve variantě KDE-Live
 	- [[BP/Distribuce/Windows]] - použití Windows v rámci testovacího procesu
+- # Další možnosti využití a schopnosti
+	- Zabezpečení přístupu k instanci - [[BP/Features/Auth]]
+	- Testování AARCH64 (ARM) - [[BP/Features/ARM]]

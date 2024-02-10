@@ -7,7 +7,7 @@
 	-
 - # Řešení
 	- Proměnné `BOOT_HDD_IMAGE` a `HDD_1`, případně ještě i `UEFI`
-- # Postup
+- # Postup - [[BP/Distribuce/Windows/Setup]]
 	- Potřebujeme získat disk s instalací Windows - moje řešení -> KVM/QEMU VM instalace -> zkopíruju z ní disk
 		- Vytvořím KVM/QEMU VM
 		- Při tvorbě si dám pozor a HDD připojím přes virtIO a ne SATA sběrnici
