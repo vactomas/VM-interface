@@ -1,0 +1,2 @@
+- Soubor `/etc/openqa/openqa.ini` obsahuje i sekci `[auth]`
+	- Zde je možnost přidat OAuth2 poskytovatele
