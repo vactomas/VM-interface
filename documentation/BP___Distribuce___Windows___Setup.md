@@ -1,4 +1,4 @@
-# Postup získání disku
+- # Postup získání disku
 	- ## Prerekvizity
 		- [odkaz na Ubuntu ISO](https://ubuntu.com/download/desktop)
 		- [Windown 10 ISO](https://www.microsoft.com/cs-cz/software-download/windows10ISO) nebo [Windows 11 ISO](https://www.microsoft.com/software-download/windows11)
