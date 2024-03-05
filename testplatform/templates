@@ -33,6 +33,19 @@
       },
       test_suite  => { name => "Windows_TestSuite" },
     },
+    {
+      group_name  => "ARM_aarch64 testing platform",
+      machine     => { name => "aarch64" },
+      prio        => 50,
+      product     => {
+        arch        => "aarch64",
+        distri      => "apptest",     # relevant folder in /vqr/lib/openqa/tests/
+        flavor      => "ARM",
+        group       => "AppTesting",
+        version     => "*",
+      },
+      test_suite => { name => "ARM_aarch64"},
+    }
   ],
 
 # Define available Machines
@@ -42,7 +55,27 @@
       name      => "64bit",
       settings  => [
         { key => "QEMUCPU", value => "qemu64" },
+        { key => "QEMURAM", value => "4096" },
+        { key => "QEMUCPUS", value => "4" },
         { key => "WORKER_CLASS", value => "qemu_x86_64" },
+      ],
+    },
+    {
+      backend   => "qemu",
+      name      => "aarch64",
+      settings  => [
+        { key => "BIOS", value => "qemu-uefi-aarch64.bin" },
+        { key => "CDMODEL", value => "virtio-blk-device" },
+        { key => "HDDMODEL", value => "virtio-blk-device" },
+        { key => "QEMU", value => "aarch64" },
+        { key => "QEMUCPU", value => "cortex-a57" },
+        { key => "QEMUMACHINE", value => "virt" },
+        { key => "QEMU_NO_KVM", value => 1 },
+        { key => "SERIALDEV", value => "ttyAMA0" },
+        { key => "TIMEOUT_SCALE", value => 4 },
+        { key => "UEFI", value => 1 },
+        { key => "VGA", value => "std" },
+        { key => "WORKER_CLASS", value => "qemu_aarch64" },
       ],
     },
   ],
@@ -56,7 +89,7 @@
       settings  => [
                       {key => "ISO_MAXSIZE", value => 999999999},
                       {key => "LIVECD",      value => 1},
-                    ],
+                   ],
       version   => "*",
     },
     {
@@ -64,9 +97,18 @@
       distri    => "apptest",
       flavor    => "Windows",
       settings  => [
+                      {key => "ISO_MAXSIZE", value => 999999999}, 
+                   ],
+      version   => "*",
+    },
+    {
+      arch      => "aarch64",
+      distri    => "apptest",
+      flavor    => "ARM",
+      settings  => [
                       {key => "ISO_MAXSIZE", value => 999999999},
                       {key => "LIVECD",      value => 1},
-                    ],
+                   ],
       version   => "*",
     },
   ],
@@ -83,6 +125,9 @@
         { key => "HDD_1",           value => "win10.qcow2" },
         { key => "UEFI",            value => 1 },
       ],
+    },
+    {
+      name    => "ARM_aarch64",
     },
   ],
 }

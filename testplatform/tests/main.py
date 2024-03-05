@@ -14,6 +14,10 @@ def run(self):
         perl.autotest.loadtest("boot_win.py")
         perl.autotest.loadtest("win.py")
 
+    elif (get_var("VERSION") == "ARM"):
+
+        perl.autotest.loadtest("boot_arm.py")
+
 def test_flags(self):
     return {'fatal': 1}
 

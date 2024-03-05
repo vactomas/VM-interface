@@ -31,6 +31,36 @@ def uefi_boot():
     send_key("ctrl-x")
 
 
+def uefi_boot_arm():
+        # Enter GRUB2 edit mode
+    send_key("e")
+  
+    # Scroll to gfxpayload and delete keep
+    for i in range(2):
+        send_key("down")
+
+    send_key("end")
+  
+    for i in range(4):
+        send_key("backspace")
+  
+    # Hardcode resolution 1024x768
+    type_string("1024x768")
+
+    send_key("home")
+
+    # Set boot params
+    for i in range(3):
+        send_key("down")
+  
+    send_key("ret")
+    send_key("up")
+    type_string("    Y2DEBUG=1 plymouth.ignore-serial-consoles console=ttyAMA0 console=tty linuxrc.log=/dev/ttyAMA0 linuxrc.core=/dev/ttyAMA0 linuxrc.debug=4,trace reboot_timeout=0 kernel.softlockup_panic=1")
+  
+    # Boot
+    send_key("ctrl-x")
+
+
 def open_app(app_name):
     # Open app menu
     send_key("super")
