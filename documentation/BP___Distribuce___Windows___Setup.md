@@ -1,4 +1,4 @@
-- # Postup získání disku
+# Postup získání disku
 	- ## Prerekvizity
 		- [Windown 10 ISO](https://www.microsoft.com/cs-cz/software-download/windows10ISO) nebo [Windows 11 ISO](https://www.microsoft.com/software-download/windows11)
 		- [virtIO drivers ISO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso)
@@ -50,7 +50,9 @@
 	- Soubor `templates`, který je součástí git repozitáře, obsahuje předdefinovaný TestSuite pro Windows
 	- Zároveň jsou zde obsažené i základní testy připravené pro platformu Windows
 	- Soubor s diskem překopírujeme na disk systému OpenSUSE, kde máme funkční OpenQA instanci
-	- Nyní už můžeme disk buď rovnou zkopírovat do `/var/lib/openqa/factory/hdd` (v tom případě stačí přeskočit na sekci Testování), nebo provedeme další nezbytnou konfiguraci, která nám umožní automaticky vytvořit vždy novou kopii disku na začátku testu a po jeho dokončení ji smazat
+	- Nyní máme dvě možnosti
+		- Disk zkopírujeme do `/var/lib/openqa/share/factory/hdd` a přejdeme do sekce ((65c90dcf-7e9d-40df-9e1c-61051fc1a02a))
+		- Pokračujeme dále s konfigurací pro vytvoření serveru, ze kterého bude openQA disk automaticky stahovat a po dokončení testu jej smaže. Testy tedy budou vždy začínat s čistým diskem.
 	- Nejprve změny v `/etc/openqa/openqa.ini`
 		- v sekci `[global]` je položka `download_domains`
 			- odstraníme `#` a jako platnou doménu nastavíme `0.0.0.0` (případně jiný server, ze kterého budeme stahovat disk)
@@ -70,6 +72,8 @@
 			- Můžeme také povolit port 8000, abychom server zpřístupnili pro všechny zařízení v lokální síti
 	- Můžeme pokračovat s testováním
 - # Testování
+  id:: 65c90dcf-7e9d-40df-9e1c-61051fc1a02a
 	- Soubor `templates` obsahuje upravené šablony pro použití s Windows
-	- Příkaz, který spustí testy s Windows, je `openqa-cli api -X POST isos DISTRI=apptest VERSION=Windows FLAVOR=Windows ARCH=x86_64 BUILD=Windows HDD_1_URL=http://0.0.0.0:8000/DRIVE_NAME.qcow2 --apikey APIKEY --apisecret APISECRET`
+	- Příkaz, který spustí testy s Windows, je `openqa-cli api -X POST isos DISTRI=apptest VERSION=Windows FLAVOR=Windows ARCH=x86_64 BUILD=Windows HDD_1=DRIVE_NAME.qcow2 HDD_1_URL=http://0.0.0.0:8000/DRIVE_NAME.qcow2 --apikey APIKEY --apisecret APISECRET`
+		- V případě, že nepoužijeme HTTP server, proměnnou `HDD_1_URL` vynecháme, protože disk nestahujeme ze serveru
 		- `VERSION` a `FLAVOR` jsou proměnné, které spustí specifický TestSuite pro Windows (vše je nastavené v `templates`)

@@ -4,8 +4,11 @@
 		- DONE QEMU
 	- TODO OCR
 	- TODO Vlastní metoda aserce
-	- TODO LaTeX
+	- DONE LaTeX
 	- TODO Struktura práce
+- # Psaní
+	- [[BP/Struktura-prace]]
+	-
 - # Distribuce
 	- Každá distribuce má vlastní složku
 	- Složka se nachází v `/var/lib/openqa/tests/...` a obsahuje soubory, které definují testovací prostředí, samotné testy a zároveň předpokládané výstupy - needles
