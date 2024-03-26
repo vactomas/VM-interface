@@ -1,0 +1,19 @@
+# Motivace
+	- Použití Windows je motivováno potřebou testovat aplikace i na tomto populárním systému
+- # Problémy s Windows
+	- Neexistující bootovatelné ISO s funkčním DE
+	- Bootovatelné ISO nejde vytvořit z disku VM - [[BP/Problemy/Windows_ISO]]
+	- Při vytváření disku si dej pozor - nutné použít virtIO místo SATA!
+	-
+- # Řešení
+	- Proměnné `BOOT_HDD_IMAGE` a `HDD_1`, případně ještě i `UEFI`
+- # Postup - [[BP/Distribuce/Windows/Setup]]
+	- Potřebujeme získat disk s instalací Windows - moje řešení -> KVM/QEMU VM instalace -> zkopíruju z ní disk
+		- Vytvořím KVM/QEMU VM
+		- Při tvorbě si dám pozor a HDD připojím přes virtIO a ne SATA sběrnici
+			- K zajištění správné funkčnosti potřebuji virtIO driver -> seženu [zde](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso)
+			- Bude je třeba načíst při instalaci, když se člověk dostane do výběru disků
+		- Připojím virtIO driver ISO získané v předchozím kroku
+		- Provedu klasickou instalaci a nastavení Windows
+		- Po ukončení vypnu VM a můžu zkopírovat .qcow2 disk
+	-

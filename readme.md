@@ -28,6 +28,10 @@ This repository contains files for my Bachelor's thesis regarding automated visu
 
  `mv ISONAME.iso /var/lib/openqa/factory/iso/`
 
+- You need to download and install `perl-Inline` a `perl-Inline-Python`
+
+ `sudo zypper install perl-Inline perl-Inline-Python`
+
  - Setup is now complete, you can move along to testing
 
 ## Single instance container setup using docker-compose

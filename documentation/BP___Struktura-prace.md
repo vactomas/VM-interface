@@ -1,0 +1,69 @@
+# Struktura
+	- ## Úvod
+		- Motivace v rámci úvodu (?)
+	- ## Rešerše
+		- Způsoby testování SW (obecněji popsat)
+			- Manuální
+			- Automatické
+				- Testy
+					- Funkce a popis
+					- Způsoby vizuální aserce
+						- Per pixel
+						- OCR
+				- Vybrané testovací frameworky (krátká zmínka o použití)
+					- Appium
+					- Selenium
+					- Espresso testing framework - Android aplikace
+		- CI/CD (Continuous integration / Continuous development (deployment))
+			- Co to je?
+			- Využití v praxi
+			- Přínosy
+			- Propojení s testováním -> možnost automatické publikace otestovaných sestavení (builds)
+		- openQA
+			- Princip činnosti
+				- Přidat blokový diagram pro vysvětlení
+				- Co jsou needles?
+				- Podporované způsoby aserce a jejich specifika
+			- Backendy
+				- KVM/QEMU
+					- možnosti emulace jiné architektury
+					- požadavky virtualizace
+				- QAD
+				- alternativy
+			- Možnosti provozu WebUI
+				- Docker
+				- Baremetal/VM
+			- Worker
+				- Co dělá
+				- Způsoby provozu
+					- Přímo na WebUI host
+					- Remote workers
+			- Podpora Pythonu
+	- ## Praktická část
+		- Příprava WebUI rozhraní
+			- Docker
+				- Postup
+				- Potíže s videem
+			- VM
+				- Požadavky na virtuální počíta
+				- Postup
+		- Příprava testování
+			- Struktura složky distribuce (složka obsahující testy) -> popis souborů a jejich funkce
+				- main.pm
+				- tests/
+				- needles/
+			- Prostředí pro spuštění aplikace
+				- Linux
+					- potřebné soubory
+				- Windows
+					- specifika platformy
+					- potřebné soubory
+					- příprava prostředí
+				- Embedded - ARM Linux
+					- příprava remote workera
+					- potřebné soubory
+				- Embedded - QAD
+					- příprava reálného hardwaru
+		- Testování
+	- ## Závěr
+		- Shrnutí práce

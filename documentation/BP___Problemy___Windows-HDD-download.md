@@ -1,0 +1,3 @@
+- Přidat podporovanou adresu `0.0.0.0` do `/etc/openqa/openqa.ini`
+- Aktivovat simpleHTTP server ve složce s diskem -> `python3 -m  http.server 8000`
+- Přidat do příkazu pro stažení testu `HDD_1_URL=http://0.0.0.0:8000/win10.qcow2`

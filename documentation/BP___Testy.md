@@ -1,0 +1,1 @@
+- OpenQA využívá testů, které se nahrávají v rámci TestSuitu v `main.pm`. Příslušná problematika nahrávání pomocí Pythonu - [[BP/Problemy/Main.pm]]

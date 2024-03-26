@@ -1,0 +1,64 @@
+# To-do list
+	- DONE Windows
+		- DONE Prozkoumat backendy
+		- DONE QEMU
+	- TODO OCR
+	- TODO Vlastní metoda aserce
+	- DONE LaTeX
+	- TODO Struktura práce
+- # Psaní
+	- [[BP/Struktura-prace]]
+	-
+- # Distribuce
+	- Každá distribuce má vlastní složku
+	- Složka se nachází v `/var/lib/openqa/tests/...` a obsahuje soubory, které definují testovací prostředí, samotné testy a zároveň předpokládané výstupy - needles
+	- Detailnější popis její struktury [[BP/Struktura-slozky]]
+- # [[BP/Testy]]
+	- Testy je možné psát v Perlu nebo Pythonu
+		- Pro zajištění funkčnosti Pythonu - [[BP/Problemy/Python]]
+- # Postup spuštění - Kontejner (Nefunkční screen)
+	- Přiložený `docker-compose.yml` zajistí vytvoření kontejneru se single-instance variantou OpenQA
+		- K tomu slouží příkaz `podman compose up -d`, kde flag `-d` spustí kontejner v detached módu
+	- Poté zjistíme API key a API secret (tohle asi není potřeba? následující příkaz funguje i bez nich)
+	- Připojíme se ke kontejneru `podman exec -it bash`. Flag `-it` značí interactive
+	- Příkazem `/var/lib/openqa/tests/apptest/templates` nahrajeme naši definici testování do instance OpenQA
+	- Potom přidáme ISO, což zároveň spustí daný set testů - `openqa-cli api -X POST isos ISO=openSUSE-Tumbleweed-KDE-Live-x86_64-Snapshot20240119-Media.iso DISTRI=apptest VERSION=Tumbleweed FLAVOR=KDELive ARCH=x86_64 BUILD=test01`
+		- Vysvětlení:
+			- ISO - jméno iso souboru se spouštěným systémem
+			- DISTRI - jméno distribuce, které odpovídá nastavení v `templates` souboru, zároveň odkazuje na složku v `/var/lib/openqa/tests/...`
+			- VERSION - jde použít jako další klíčové slovo pro výběr testů v `templates` (momentálně nepoužité)
+			- FLAVOR - další klíčové slovo (v současnosti je v `templates` definováno pouze KDELive)
+			- ARCH - architektura testovaného systému - používáme x86_64
+			- BUILD - označení testovaného buildu
+- # Postup spuštění - VM
+	- Využívám OpenSUSE KDE VM běžící na QEMU/KVM
+		- architektura x86_64
+		- 16 GB RAM
+		- 6 vCPUs
+		- 128 GB disk
+	- Bootstrap OpenQA pomocí skriptu `curl -s https://raw.githubusercontent.com/os-autoinst/openQA/master/script/openqa-bootstrap | bash -x`
+	- Passthrough složek z openqa-app-testing
+		- iso
+		- testplatform
+	- Mount složek -> [[BP/Problemy/Mount-slozek]]
+	- Příkazem `/var/lib/openqa/tests/apptest/templates` nahrajeme naši definici testování do instance OpenQA
+	- Potom přidáme ISO, což zároveň spustí daný set testů - `openqa-cli api -X POST isos ISO=openSUSE-Tumbleweed-KDE-Live-x86_64-Snapshot20240119-Media.iso DISTRI=apptest VERSION=Tumbleweed FLAVOR=KDELive ARCH=x86_64 BUILD=test01`
+		- Vysvětlení:
+			- ISO - jméno iso souboru se spouštěným systémem
+			- DISTRI - jméno distribuce, které odpovídá nastavení v `templates` souboru, zároveň odkazuje na složku v `/var/lib/openqa/tests/...`
+			- VERSION - jde použít jako další klíčové slovo pro výběr testů v `templates` (momentálně nepoužité)
+			- FLAVOR - další klíčové slovo (v současnosti je v `templates` definováno pouze KDELive)
+			- ARCH - architektura testovaného systému - používáme x86_64
+			- BUILD - označení testovaného buildu
+- # Problémy -> [[BP/Problemy]]
+	- Mount disků ve VM je potřeba udělat po každém bootu VM [[BP/Problemy/Mount-slozek]] ![image.png](../assets/image_1706726278907_0.png)
+		- TODO zkusit se podívat, jestli by nešel spouštět skript při bootu (možná přes systemd?)
+			- TODO prozkoumat bindfs
+	- [[BP/Problemy/Python]] - Vyřešení nefunkčního Python rozhraní
+	- [[BP/Problemy/Main.pm]] - Hlavní soubor distribuce je v Perlu
+- # Distribuce
+	- [[BP/Distribuce/OpenSUSE]] - otestováno OpenSUSE ve variantě KDE-Live
+	- [[BP/Distribuce/Windows]] - použití Windows v rámci testovacího procesu
+- # Další možnosti využití a schopnosti
+	- Zabezpečení přístupu k instanci - [[BP/Features/Auth]]
+	- Testování AARCH64 (ARM) - [[BP/Features/ARM]]
