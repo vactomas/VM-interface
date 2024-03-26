@@ -19,7 +19,11 @@ This repository contains files for my Bachelor's thesis regarding automated visu
  - Use bindfs to bind the folder to the correct place or just move them (bindfs will be the preferred option, but currently we will just move the folders manually for testing purposes)
 
  `mv openqa-app-testing/testplatform/* /var/lib/openqa/tests/apptest/`
- 
+
+ - load test template by executing:
+
+ `openqa-load-templates <path to template file>`
+
  - Download OpenSUSE KDE-Live ISO and move it to OpenQA iso folder
 
  `mv ISONAME.iso /var/lib/openqa/factory/iso/`
@@ -35,14 +39,14 @@ This repository contains files for my Bachelor's thesis regarding automated visu
  - Install Podman Desktop - https://podman.io/
 
  - Clone the repository
- 
+
  `git clone github.com/vactomas/openqa-app-testing.git`
 
  - Go into the directory and create folders iso and tests
 
  `cd openqa-app-testing/ && mkdir iso && mkdir tests`
 
- - Create the containers using the docker compose engine 
+ - Create the containers using the docker compose engine
 
  `docker-compose up -d`
 
@@ -68,8 +72,8 @@ This repository contains files for my Bachelor's thesis regarding automated visu
 
  `/usr/share/openqa/script/fetchneedles`
  `/var/lib/openqa/share/tests/opensuse/products/opensuse/templates --apikey APIKEY --apisecret APISECRET` - replace APIKEY and APISECRETS with values you extracted earlier from Logs
- 
- - Download the ISO file you want to test and copy it to the ./iso/ folder located in the folder, where docker-compose.yml is located. 
+
+ - Download the ISO file you want to test and copy it to the ./iso/ folder located in the folder, where docker-compose.yml is located.
 
  - Copy the ISO file from /iso-images/ to /var/lib/openqa/share/factory/iso/
 
@@ -88,4 +92,4 @@ This repository contains files for my Bachelor's thesis regarding automated visu
         URL=https://github.com/Qalculate/qalculate-gtk/releases/download/v4.9.0/qalculate-4.9.0-x86_64.tar.xz \
         --apikey APIKEY --apisecret APISECRET`
 
-ISONAME and BUILDID are variables that need to be changed. The rest of this command presumes that you are using KDE-Live version of Tumbleweed. APP and URL are custom variables used as a part of an demonstration test. APIKEY and APISECRET can be found at http://127.0.0.1/api_keys 
+ISONAME and BUILDID are variables that need to be changed. The rest of this command presumes that you are using KDE-Live version of Tumbleweed. APP and URL are custom variables used as a part of an demonstration test. APIKEY and APISECRET can be found at http://127.0.0.1/api_keys

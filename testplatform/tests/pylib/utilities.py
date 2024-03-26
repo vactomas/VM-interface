@@ -60,7 +60,7 @@ def uefi_boot_arm():
     # Boot
     send_key("ctrl-x")
 
-
+    
 def open_app(app_name):
     # Open app menu
     send_key("super")
@@ -75,6 +75,7 @@ def open_app(app_name):
     send_key("ret")
     sleep(1)
 
+    
 def download_and_open():
     # Get variables from test settings
     app_name = get_var("APP")
