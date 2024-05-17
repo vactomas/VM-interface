@@ -1,0 +1,40 @@
+{
+  "area": [
+    {
+      "xpos": 166,
+      "ypos": 119,
+      "width": 63,
+      "height": 42,
+      "type": "match"
+    },
+    {
+      "xpos": 812,
+      "ypos": 558,
+      "width": 25,
+      "height": 68,
+      "type": "match",
+      "click_point": {
+        "xpos": 12.5,
+        "ypos": 34
+      }
+    },
+    {
+      "xpos": 655,
+      "ypos": 634,
+      "width": 338,
+      "height": 57,
+      "type": "exclude"
+    },
+    {
+      "xpos": 776,
+      "ypos": 723,
+      "width": 248,
+      "height": 45,
+      "type": "exclude"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "qalculate_equals_linux"
+  ]
+}

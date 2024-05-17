@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "xpos": 244,
+      "ypos": 39,
+      "width": 539,
+      "height": 621,
+      "type": "match",
+      "match": 96,
+      "margin": 50
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "qalculate_open_windows"
+  ]
+}

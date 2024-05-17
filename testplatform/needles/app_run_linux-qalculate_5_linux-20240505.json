@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "xpos": 789,
+      "ypos": 252,
+      "width": 50,
+      "height": 44,
+      "type": "match",
+      "match": 100
+    },
+    {
+      "xpos": 651,
+      "ypos": 508,
+      "width": 32,
+      "height": 28,
+      "type": "match",
+      "click_point": {
+        "xpos": 16,
+        "ypos": 14
+      }
+    },
+    {
+      "xpos": 648,
+      "ypos": 622,
+      "width": 357,
+      "height": 81,
+      "type": "exclude"
+    },
+    {
+      "xpos": 776,
+      "ypos": 724,
+      "width": 243,
+      "height": 43,
+      "type": "exclude"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "qalculate_5_linux"
+  ]
+}

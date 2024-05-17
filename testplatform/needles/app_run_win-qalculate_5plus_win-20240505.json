@@ -1,0 +1,19 @@
+{
+  "area": [
+    {
+      "xpos": 700,
+      "ypos": 593,
+      "width": 23,
+      "height": 19,
+      "type": "match",
+      "click_point": {
+        "xpos": 11.5,
+        "ypos": 9.5
+      }
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "qalculate_5plus_win"
+  ]
+}

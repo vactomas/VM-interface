@@ -1,23 +1,25 @@
 from testapi import *
 
-def run(self):
 
+def run(self):
     perl.require("autotest.pm")
 
-    if (get_var("VERSION") == "Tumbleweed"):
-        
+    if get_var("VERSION") == "Tumbleweed":
         perl.autotest.loadtest("boot.py")
-        perl.autotest.loadtest("app_download.py")
+        perl.autotest.loadtest("app_download_linux.py")
+        perl.autotest.loadtest("app_run_linux.py")
 
-    elif (get_var("VERSION") == "Windows"):
-
+    elif get_var("VERSION") == "Windows":
         perl.autotest.loadtest("boot_win.py")
-        perl.autotest.loadtest("win.py")
+        perl.autotest.loadtest("app_download_win.py")
+        perl.autotest.loadtest("app_run_win.py")
 
-    elif (get_var("VERSION") == "ARM"):
-
+    elif get_var("VERSION") == "ARM":
         perl.autotest.loadtest("boot_arm.py")
 
-def test_flags(self):
-    return {'fatal': 1}
+    elif get_var("VERSION") == "QAD":
+        perl.autotest.loadtest("start_qad.py")
 
+
+def test_flags(self):
+    return {"fatal": 1}

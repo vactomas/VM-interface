@@ -35,7 +35,7 @@
 
 ## Usage of QAD application on raspberry pi
 * connect HDMI monitor to port HDMI1
-* `XPG_RUNTIME_DIR=/run/user/100 ./qad -k card1`
+* `XDG_RUNTIME_DIR=/run/user/1000 ./qad -k card1`
 * install `apt-get install libdrm-tests`
 * run `modetest`
     * find encoder ID of your HDMI and find a mapping of encoder ID with crtc

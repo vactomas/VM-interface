@@ -45,7 +45,20 @@
         version     => "*",
       },
       test_suite => { name => "ARM_aarch64"},
-    }
+    },
+    {
+      group_name  => "QAD",
+      machine     => { name => "qad" },
+      prio        => 50,
+      product     => {
+        arch	    => "aarch64",
+        distri      => "apptest",     # relevant folder in /vqr/lib/openqa/tests/
+        flavor      => "QAD",
+        group       => "AppTesting",
+        version     => "*",
+      },
+      test_suite => { name => "QAD"},
+    },
   ],
 
 # Define available Machines
@@ -76,6 +89,13 @@
         { key => "UEFI", value => 1 },
         { key => "VGA", value => "std" },
         { key => "WORKER_CLASS", value => "qemu_aarch64" },
+      ],
+    },
+    {
+      backend   => "qad",
+      name      => "qad",
+      settings  => [
+        { key => "WORKER_CLASS", value => "qad" },
       ],
     },
   ],
@@ -111,6 +131,12 @@
                    ],
       version   => "*",
     },
+    {
+      arch 	=> "aarch64",
+      distri	=> "apptest",
+      flavor	=> "QAD",
+      version	=> "*",
+    },
   ],
 
 # Define Test Suites
@@ -128,6 +154,9 @@
     },
     {
       name    => "ARM_aarch64",
+    },
+    {
+      name    => "QAD",
     },
   ],
 }

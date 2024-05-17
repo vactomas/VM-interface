@@ -7,7 +7,7 @@ services:
         container_name: openqa
         volumes:
           - ./iso:/var/lib/openqa/factory/iso
-          - ./testplatform:/var/lib/openqa/tests/apptest
+          - ./testplatform:/var/lib/openqa/tests/testplatform
         ports:
           - 1080:80
           - 1443:443
