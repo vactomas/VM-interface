@@ -81,13 +81,26 @@ def open_app(app_name):
 
 
 def download_and_open_linux():
-    # Get variables from test settings
-    app_name = get_var("APP")
-    url = get_var("URL")
-
     # Open Konsole
     open_app("Konsole")
     assert_screen("konsole_opened", 2)
+
+    download_linux()
+
+
+def download_and_open_arm():
+    # Open Terminal
+    open_app("Terminal")
+    assert_screen("terminal_opened", 2)
+
+    download_linux()
+
+
+def download_linux():
+    # Get variables from test settings
+    app_name = get_var("APP")
+    app_name_run = get_var("APP_RUN")
+    url = get_var("URL")
 
     # Download app
     type_string(f"wget {url}\n")
@@ -106,7 +119,7 @@ def download_and_open_linux():
     sleep(1)
 
     # Run app
-    type_string(f"./{app_name}\n")
+    type_string(f"./{app_name_run}\n")
     sleep(1)
 
 
@@ -157,4 +170,3 @@ def download_and_open_windows():
     sleep(1)
     send_key("ret")
     sleep(10)
-
