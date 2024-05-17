@@ -1,5 +1,5 @@
 from testapi import *
-from pylib.utilities import download_and_open_linux as download_and_open
+from utilities import download_and_open_linux as download_and_open
 
 
 def run(self):

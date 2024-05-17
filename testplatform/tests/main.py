@@ -15,9 +15,7 @@ def run(self):
         perl.autotest.loadtest("app_run_win.py")
 
     elif get_var("VERSION") == "ARM":
-        perl.autotest.loadtest("boot_arm.py")
-        perl.autotest.loadtest("app_download_linux.py")
-        perl.autotest.loadtest("app_run_linux.py")
+        perl.autotest.loadtest("tests/arm.py")
 
     elif get_var("VERSION") == "QAD":
         perl.autotest.loadtest("start_qad.py")

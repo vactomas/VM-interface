@@ -1,0 +1,16 @@
+{
+  "area": [
+    {
+      "xpos": 0,
+      "ypos": 460,
+      "width": 389,
+      "height": 33,
+      "type": "match",
+      "match": 96
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calculation_complete"
+  ]
+}

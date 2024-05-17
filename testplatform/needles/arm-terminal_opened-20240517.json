@@ -1,0 +1,15 @@
+{
+  "area": [
+    {
+      "xpos": 8,
+      "ypos": 38,
+      "width": 638,
+      "height": 102,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "terminal_opened"
+  ]
+}

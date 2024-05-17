@@ -1,0 +1,26 @@
+{
+  "area": [
+    {
+      "xpos": 259,
+      "ypos": 141,
+      "width": 526,
+      "height": 452,
+      "type": "match"
+    },
+    {
+      "xpos": 562,
+      "ypos": 502,
+      "width": 81,
+      "height": 32,
+      "type": "match",
+      "click_point": {
+        "xpos": 40.5,
+        "ypos": 16
+      }
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "fedora_welcome"
+  ]
+}

@@ -85,7 +85,30 @@ def download_and_open_linux():
     open_app("Konsole")
     assert_screen("konsole_opened", 2)
 
-    download_linux()
+    # Get variables from test settings
+    app_name = get_var("APP")
+    app_name_run = get_var("APP_RUN")
+    url = get_var("URL")
+
+    # Download app
+    type_string(f"wget {url}\n")
+    sleep(10)
+
+    # Untar
+    type_string(f"tar -xf {app_name}")
+    send_key("tab")
+    send_key("ret")
+    sleep(10)
+
+    # Open app folder
+    type_string(f"cd {app_name}")
+    send_key("tab")
+    send_key("ret")
+    sleep(1)
+
+    # Run app
+    type_string(f"./{app_name_run}\n")
+    sleep(1)
 
 
 def download_and_open_arm():
@@ -93,10 +116,6 @@ def download_and_open_arm():
     open_app("Terminal")
     assert_screen("terminal_opened", 2)
 
-    download_linux()
-
-
-def download_linux():
     # Get variables from test settings
     app_name = get_var("APP")
     app_name_run = get_var("APP_RUN")
