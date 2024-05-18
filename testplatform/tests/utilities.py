@@ -75,15 +75,14 @@ def open_app(app_name):
     # Type the app name and press ENTER
     type_string(app_name)
 
-    sleep(2)
+    sleep(5)
     send_key("ret")
-    sleep(2)
 
 
 def download_and_open_linux():
     # Open Konsole
     open_app("Konsole")
-    assert_screen("konsole_opened", 10)
+    assert_screen("konsole_opened", 20)
 
     # Get variables from test settings
     app_name = get_var("APP")
