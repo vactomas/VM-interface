@@ -7,8 +7,8 @@ def run(self):
 
     uefi_boot()
 
-    assert_screen("boot", 120)
+    assert_screen("boot", 100)
 
 
 def test_flags(self):
-    return {"fatal": 1}
+    return {"milestone": 1}

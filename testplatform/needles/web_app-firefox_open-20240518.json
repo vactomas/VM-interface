@@ -1,0 +1,26 @@
+{
+  "area": [
+    {
+      "xpos": 11,
+      "ypos": 98,
+      "width": 996,
+      "height": 216,
+      "type": "match"
+    },
+    {
+      "xpos": 56,
+      "ypos": 334,
+      "width": 141,
+      "height": 69,
+      "type": "match",
+      "click_point": {
+        "xpos": 70.5,
+        "ypos": 34.5
+      }
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "firefox_open"
+  ]
+}

@@ -8,6 +8,8 @@ def run(self):
         perl.autotest.loadtest("boot.py")
         perl.autotest.loadtest("app_download_linux.py")
         perl.autotest.loadtest("app_run_linux.py")
+        perl.autotest.loadtest("rollback.py")
+        perl.autotest.loadtest("web_app.py")
 
     elif get_var("VERSION") == "Windows":
         perl.autotest.loadtest("boot_win.py")

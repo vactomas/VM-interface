@@ -1,0 +1,26 @@
+{
+  "area": [
+    {
+      "xpos": 261,
+      "ypos": 221,
+      "width": 470,
+      "height": 325,
+      "type": "match"
+    },
+    {
+      "xpos": 703,
+      "ypos": 105,
+      "width": 84,
+      "height": 18,
+      "type": "match",
+      "click_point": {
+        "xpos": 42,
+        "ypos": 9
+      }
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "next_slide"
+  ]
+}
